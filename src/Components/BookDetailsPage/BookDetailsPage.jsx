@@ -18,17 +18,17 @@ const BookDetailsPage = () => {
         }, [])
     return (
     <>
-      <div className="bookContainer">
+      <div className="bookContainer" key={data.id}>
         <h2 className="title">{data.title}</h2>
         <img className="image" src={data.imageUrl} alt="#" />
         <div className="author">{data.author}</div>
         <div className="description">{data.description}</div>
-        <div className="price">{"show book Price here"}</div>
+        <div className="price">{data.price}</div>
         <div className="section">{data.section}</div>
         <div className="isbnNumber">{data.isbnNumber}</div>
         <ul className="reviews">
-            {review.map((el)=>{
-                return <li>{el}</li>
+            {review.map((el,index)=>{
+                return <li key={index}>{el}</li>
             })}
         </ul>
       </div>

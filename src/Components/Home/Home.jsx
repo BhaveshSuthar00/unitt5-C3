@@ -1,5 +1,6 @@
 import React, {useState,useEffect} from 'react'
 import './home.css'
+import SortAndFilterButtons from '../SortAndFilterButtons/SortAndFilterButtons'
 import axios from 'axios'
 import BookCard from '../BookCard/BookCard'
 const Home = () => {
@@ -51,12 +52,7 @@ const Home = () => {
   return (
     <div className='homeContainer'>
       <h2 style={{ textAlign: "center" }}>Home</h2>
-      <div className='sorting' >
-        <button onClick={()=> {handleSort('asc', 'title')}}>Sort by title Asc</button>
-        <button onClick={()=> {handleSort('desc', 'title')}}>Sort by title Desc</button>
-        <button onClick={()=> {handleSort('asc', 'price')}}>Sort price Asc</button>
-        <button onClick={()=> {handleSort('desc', 'price')}}>Sort price Desc</button>
-      </div>
+      <SortAndFilterButtons handleSort={handleSort}/>
       <div className="mainContainer" >
         {data.map(({title,imageUrl,price,id})=>{
           return <BookCard key={id} title={title} imageUrl={imageUrl} price={price} id={id} />
