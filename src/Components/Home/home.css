@@ -1,15 +1,15 @@
-.sorting {
+.sortButtons {
     display: flex;
     cursor: pointer;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
-.mainContainer {
+.mainContainer,.sectionContainer {
     display: grid;
     grid-template-columns: repeat(4,1fr);
 }
-.mainContainer>a {
-    margin: 1%;
+.mainContainer>a, .sectionContainer>a {
+    margin: 3%;
     text-decoration: none;
     color: black;
-    border: 1px solid black;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }

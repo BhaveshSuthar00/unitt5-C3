@@ -1,6 +1,9 @@
 .navbar {
     display: flex;
+    padding: 1% 0 1% 0;
+    background-color: rgb(161, 255, 161);
     justify-content: space-evenly;
+    font-weight:  bolder;
 }
 .navbar > a {
     color:  black;

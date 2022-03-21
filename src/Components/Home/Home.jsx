@@ -19,7 +19,7 @@ const Home = () => {
   const handleSort = (sort, value) =>{
     if(sort === 'asc' && value==='title'){
       data.sort((a,b)=> {
-        if(a.title<b.title){
+        if(a.title>b.title){
           return -1;
         } else {
           return 1;
@@ -29,7 +29,7 @@ const Home = () => {
     }
     if(sort === 'desc' && value==='title'){
       data.sort((a,b)=> {
-        if(a.title>b.title){
+        if(a.title<b.title){
           return -1;
         } else {
           return 1;

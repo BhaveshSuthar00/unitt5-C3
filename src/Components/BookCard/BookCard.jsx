@@ -4,7 +4,7 @@ const BookCard = ({id, title, imageUrl, price}) => {
     return (
         <Link to={`/bookdetailspage/${id}`}>
             <div className='bookCard'>
-                <img src={imageUrl} alt="" width="100" height="50%" />
+                <img src={imageUrl} alt="" width="100%" height="40%" />
                 <h2 className='title'>
                     {title}
                 </h2>
