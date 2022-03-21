@@ -20,9 +20,9 @@ const Home = () => {
     if(sort === 'asc' && value==='title'){
       data.sort((a,b)=> {
         if(a.title>b.title){
-          return -1;
-        } else {
           return 1;
+        } else {
+          return -1;
         }
       })
       setChange(!change)
@@ -30,9 +30,9 @@ const Home = () => {
     if(sort === 'desc' && value==='title'){
       data.sort((a,b)=> {
         if(a.title<b.title){
-          return -1;
-        } else {
           return 1;
+        } else {
+          return -1;
         }
       })
       setChange(!change)
