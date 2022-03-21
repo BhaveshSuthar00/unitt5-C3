@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
 
-const BookCard = () => {
+const BookCard = ({id, title, imageUrl, price}) => {
     return (
-        <Link to='/'>
+        <Link to={`/bookdetailspage/${id}`}>
             <div className='bookCard'>
-                image of the bookd
+                <img src={imageUrl} alt="" width="100" height="50%" />
                 <h2 className='title'>
-                    title
+                    {title}
                 </h2>
                 <p className='price'>
-                    price
+                    {price}
                 </p>
             </div>
         </Link>
