@@ -8,6 +8,7 @@ const Section = () => {
     const [data, setData] = useState([]);
     const {id} = useParams();
     const getData = async () =>{
+      
         try {
             let getting = await axios.get('http://localhost:8080/books');
             let final = getting.data;
