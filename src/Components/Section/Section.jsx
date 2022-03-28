@@ -1,32 +1,36 @@
 import React, {useState,useEffect} from 'react'
 import {useParams} from 'react-router-dom'
 import axios from 'axios'
-import '../Home/home.css'
 import BookCard from '../BookCard/BookCard'
 import SortAndFilterButtons from '../SortAndFilterButtons/SortAndFilterButtons'
+import styled from 'styled-components'
 const Section = () => {
+    
+const Main = styled.div`
+display : grid;
+gap : 2%;
+grid-template-columns: repeat(4, 1fr);
+`
     const [data, setData] = useState([]);
-    const {id} = useParams();
-    const getData = async () =>{
+    const {section} = useParams();
+    const getData = () =>{
       
-        try {
-            let getting = await axios.get('http://localhost:8080/books');
-            let final = getting.data;
-            let ff = [];
-            for(let i = 0; i<final.length; i++) {
-                if(final[i].section === id){
-                    ff.push(final[i])
+          axios.get('http://localhost:8080/books').then((res)=> {
+            let dd = section.toLowerCase();
+              let datafor = res.data.filter((book)=>{
+                let cd = book.section.toLowerCase();
+                if(cd === dd){
+                    return true;
+                } else { 
+                    return false;
                 }
-            }
-            setData(ff);
-        }
-        catch(err){
-            console.log(err.message)
-        }
+              })
+              setData(datafor)
+          })
     } 
     useEffect(()=>{
       getData();
-    }, [id])
+    }, [section])
     const [change, setChange] = useState(false);
     const handleSort = (sort, value) =>{
       if(sort === 'asc' && value==='title'){
@@ -66,12 +70,12 @@ const Section = () => {
         <div style={{ padding : '2% 0 2% 0'}}>
         <SortAndFilterButtons handleSort={handleSort} />
         </div>
-        <div style={{ textAlign : 'center', fontWeight : 'bolder', padding : '1% 0 2% 0' }}>Section {id}</div>
-        <div className='sectionContainer'>
+        <div style={{ textAlign : 'center', fontWeight : 'bolder', padding : '1% 0 2% 0' }}>Section {section}</div>
+        <Main className='sectionContainer'>
             {data.map(({title,price,imageUrl, id}) => {
                 return <BookCard key={id} title={title} imageUrl={imageUrl} price={price} id={id} />
             })}
-        </div>
+        </Main>
         </>
     )
 }

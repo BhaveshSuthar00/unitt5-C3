@@ -16,7 +16,8 @@ const BookDetailsPage = () => {
         useEffect(()=>{
         getData();
         }, [])
-    return (
+    if(!data.title) return <h1>loading...</h1>
+        return (
     <>
       <div className="bookContainer" key={data.id}>
         <h2 className="title">{data.title}</h2>

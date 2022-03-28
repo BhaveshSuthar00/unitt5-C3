@@ -1,9 +1,18 @@
 import React, {useState,useEffect} from 'react'
-import './home.css'
 import SortAndFilterButtons from '../SortAndFilterButtons/SortAndFilterButtons'
 import axios from 'axios'
+import {Link} from 'react-router-dom'
+import styled from 'styled-components'
 import BookCard from '../BookCard/BookCard'
 const Home = () => {
+  
+
+const Main = styled.div`
+    display : grid;
+    gap : 2%;
+    grid-template-columns: repeat(4, 1fr);
+`
+
   const [data, setData] = useState([]);
   const getData = () => {
     axios.get('http://localhost:8080/books').then((response) => {
@@ -53,11 +62,11 @@ const Home = () => {
     <div className='homeContainer'>
       <h2 style={{ textAlign: "center" }}>Home</h2>
       <SortAndFilterButtons handleSort={handleSort}/>
-      <div className="mainContainer" >
+      <Main className="mainContainer" >
         {data.map(({title,imageUrl,price,id})=>{
           return <BookCard key={id} title={title} imageUrl={imageUrl} price={price} id={id} />
         })}
-      </div>
+      </Main>
     </div>
   )
 }

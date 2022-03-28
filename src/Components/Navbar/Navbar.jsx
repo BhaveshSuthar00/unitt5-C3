@@ -1,15 +1,31 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import './navbar.css'
+// import './navbar.css'
+import styled from 'styled-components'
 const Navbar = () => {
+  const Nav = styled.div`
+    display: flex;
+    padding: 1% 0 1% 0;
+    background-color: rgb(161, 255, 161);
+    justify-content: space-evenly;
+    font-weight:  bolder;
+    & a {
+      color:  black;
+      list-style: none;
+      text-decoration: none;
+    }
+    & a:hover {
+    text-decoration: underline;
+    }
+  `
   return (
-    <div className="navbar">
+    <Nav className="navbar">
         <Link to='/'>Home</Link>
-        <Link to={`/section/${'History'}`}>History</Link>
-        <Link to={`/section/${'Technology'}`}>Technology</Link>
-        <Link to={`/section/${'Mythology'}`}>Mythology</Link>
-        <Link to={`/section/${'Mystery'}`}>Mystery</Link>
-    </div>
+        <Link to={`/section/${'history'}`}>History</Link>
+        <Link to={`/section/${'technology'}`}>Technology</Link>
+        <Link to={`/section/${'mythology'}`}>Mythology</Link>
+        <Link to={`/section/${'mystery'}`}>Mystery</Link>
+    </Nav>
   )
 }
 
